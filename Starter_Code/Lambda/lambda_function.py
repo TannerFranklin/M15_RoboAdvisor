@@ -1,4 +1,5 @@
 ### Required Libraries ###
+import json
 from datetime import datetime
 from xml.dom import NoModificationAllowedErr
 from dateutil.relativedelta import relativedelta
@@ -115,7 +116,7 @@ In this section, you will create an Amazon Lambda function that will validate th
 
 def validate_data(age, investment_amount, intent_request):
     if age is not None:
-        age = parse_float(
+        age = int(
             age
         )
         if age <= 0 and age >= 65:
@@ -126,7 +127,7 @@ def validate_data(age, investment_amount, intent_request):
             )
 
     if investment_amount is not None:
-        investment_amount = parse_float(
+        investment_amount = int(
             investment_amount
         )
         if investment_amount < 5000:
